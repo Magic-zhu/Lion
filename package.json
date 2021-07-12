@@ -1,0 +1,44 @@
+{
+  "name": "lion.ts",
+  "version": "0.0.1",
+  "description": "canvas renderer 先占个坑位",
+  "main": "build/mot-plugin-path-es.min.js",
+  "scripts": {
+    "build": "rollup -c",
+    "start": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Magic-zhu/mot.git"
+  },
+  "keywords": [
+    "canvas"
+  ],
+  "author": "magic-zhu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Magic-zhu/mot/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.23",
+    "@types/mocha": "^8.2.2",
+    "jest": "^27.0.1",
+    "rollup-plugin-dts": "^2.0.1",
+    "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-typescript2": "^0.29.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "ts-jest": "^27.0.1",
+    "typescript": "^4.1.3",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
+    "eslint": "^7.28.0",
+    "eslint-config-google": "^0.14.0",
+    "@rollup/plugin-typescript": "^8.0.0"
+  },
+  "types": "build/index.d.ts",
+  "files": [
+    "src",
+    "build"
+  ],
+  "module": "./src/index.ts"
+}
