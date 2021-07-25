@@ -1,8 +1,8 @@
 import BaseNode from './BaseNode'
-class Stage extends BaseNode {
+class Layer extends BaseNode {
     
     render(){
 
     }
 }
-export default Stage
+export default Layer

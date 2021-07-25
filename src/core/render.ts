@@ -1,3 +1,3 @@
-export const renderUseCanvas = () => {
+export const renderUseCanvas = (layers) => {
 
 };

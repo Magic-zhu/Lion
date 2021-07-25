@@ -1,3 +1,1 @@
-export interface ApplicationOptions {
-    resolution: number;
-}
+export * from './App.d'

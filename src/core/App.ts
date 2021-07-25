@@ -1,4 +1,5 @@
 import BaseNode from './BaseNode';
+import { renderUseCanvas } from './render';
 import {ApplicationOptions} from '../@types/index.d';
 /**
  *
@@ -8,6 +9,11 @@ import {ApplicationOptions} from '../@types/index.d';
  * @extends {BaseNode}
  */
 class App extends BaseNode {
+
+  root:HTMLDivElement = null;
+  layers:[] = [];
+  _layersSortedByIndex = [];
+
   /**
   * Creates an instance of App.
   * @param {ApplicationOptions} [options]
@@ -17,6 +23,16 @@ class App extends BaseNode {
   */
   constructor(options?:ApplicationOptions) {
     super();
+    this.nodeType = 'APP';
+  }
+
+
+  mount(element:HTMLDivElement) {
+    this.root = element;
+  }
+
+  render() {
+    renderUseCanvas(this._layersSortedByIndex)
   }
 }
 
