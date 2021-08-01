@@ -1,8 +1,12 @@
-import BaseNode from './BaseNode'
-class Layer extends BaseNode {
-    
-    render(){
+import BaseNode from './BaseNode';
 
-    }
+/**
+ *
+ *
+ * @class Layer
+ * @extends {BaseNode}
+ */
+class Layer extends BaseNode {
+
 }
-export default Layer
+export default Layer;

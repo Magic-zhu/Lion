@@ -9,7 +9,7 @@ window.Lion = {
   Layer,
   Block,
   Sprite,
-}
+};
 
 export {
   App,

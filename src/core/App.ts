@@ -1,5 +1,5 @@
 import BaseNode from './BaseNode';
-import { renderUseCanvas } from './render';
+import {renderUseCanvas} from './render';
 import {ApplicationOptions} from '../@types/index.d';
 /**
  *
@@ -9,7 +9,6 @@ import {ApplicationOptions} from '../@types/index.d';
  * @extends {BaseNode}
  */
 class App extends BaseNode {
-
   root:HTMLDivElement = null;
   layers:[] = [];
   _layersSortedByIndex = [];
@@ -27,12 +26,23 @@ class App extends BaseNode {
   }
 
 
+  /**
+   *
+   *
+   * @param {HTMLDivElement} element
+   * @memberof App
+   */
   mount(element:HTMLDivElement) {
     this.root = element;
   }
 
+  /**
+   *
+   *
+   * @memberof App
+   */
   render() {
-    renderUseCanvas(this._layersSortedByIndex)
+    renderUseCanvas(this._layersSortedByIndex);
   }
 }
 

@@ -5,8 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <script src="../dist/lion.iife.min.js"></script>
 </head>
 <body>
     
 </body>
+<script>
+    const App = Lion.App;
+    const Layer = Lion.Layer;
+    const Block = Lion.Block;
+    let app = new App();
+    let f = new Block();
+    let stage = new Layer();
+    stage.append(f);
+    console.log(stage)
+    
+</script>
 </html>
