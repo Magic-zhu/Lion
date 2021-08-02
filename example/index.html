@@ -6,6 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="../dist/lion.iife.min.js"></script>
+    <style>
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
 </head>
 <body>
     
@@ -17,8 +25,9 @@
     let app = new App();
     let f = new Block();
     let stage = new Layer();
+    app.append(stage);
     stage.append(f);
     console.log(stage)
-    
+    app.render()
 </script>
 </html>

@@ -1,10 +1,18 @@
+/**
+ *
+ *
+ * @export
+ * @class Color
+ */
 export class Color {
   /**
-   * Converts a color as an [R, G, B] array of normalized floats to a hexadecimal number.
+   * Converts a color as an [R, G, B] array of normalized floats
+   * to a hexadecimal number.
    * @example
    * rgb2hex([1, 1, 1]); // returns 0xffffff
    * @static
-   * @param {(number[] | Float32Array)} rgb - Array of numbers where all values are normalized floats from 0.0 to 1.0.
+   * @param {(number[] | Float32Array)} rgb - Array of numbers where all values
+   * are normalized floats from 0.0 to 1.0.
    * @return {number}  Number in hexadecimal.
    * @memberof Color
    */
