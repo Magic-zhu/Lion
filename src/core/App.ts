@@ -1,8 +1,6 @@
-import BaseNode from './BaseNode';
+import {renderUseCanvas} from './render';
 import {ApplicationOptions} from '../@types/index.d';
-import {Renderer} from './render';
-import type Stage from './Stage';
-
+import Layer from './Layer';
 /**
  *
  *
@@ -10,7 +8,12 @@ import type Stage from './Stage';
  * @class App
  * @extends {BaseNode}
  */
-class App extends BaseNode {
+class App {
+  nodeType:string
+  root:HTMLDivElement = null;
+  layers:Layer [] = [];
+  _layersSortedByIndex = [];
+
   /**
    *
    *
@@ -29,12 +32,50 @@ class App extends BaseNode {
   * @memberof App
   */
   constructor(options?:ApplicationOptions) {
-    super();
-    this.renderer = new Renderer(options);
+    this.nodeType = 'APP';
   }
 
+
+  /**
+   *
+   *
+   * @param {HTMLDivElement} element
+   * @memberof App
+   */
+  mount(element:HTMLDivElement) {
+    this.root = element;
+  }
+
+  /**
+   *
+   *
+   * @memberof App
+   */
   render() {
-    this.renderer.render(this.stage);
+    this._layersSortedByIndex =
+      this.layers.sort((a, b)=>{
+        return a.attributes.zIndex - b.attributes.zIndex;
+      });
+    renderUseCanvas(this._layersSortedByIndex);
+  }
+
+  /**
+   *
+   * put the layers into the application
+   * @memberof App
+   * @param {Layer} layer - the instance of layer
+   */
+  append(layer:Layer) {
+    // if you had not mount an element, it will create one.
+    if (this.root===null) {
+      this.root = document.createElement('div');
+      this.root.id = 'LionRoot';
+      this.root.style.width = '100%';
+      this.root.style.height = '100%';
+      document.body.append(this.root);
+    }
+    this.root.append(layer._self);
+    this.layers.push(layer);
   }
 }
 

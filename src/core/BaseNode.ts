@@ -111,9 +111,16 @@ class BaseNode {
   /**
    *
    *
+   * @param {BaseNode} child
    * @memberof BaseNode
    */
-  append() {}
+  append(child:BaseNode) {
+    if (child instanceof BaseNode) {
+      this.children.push(child);
+    } else {
+      throw new Error('only Lion node can be appended.');
+    }
+  }
 }
 
 export default BaseNode;

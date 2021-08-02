@@ -1,11 +1,22 @@
 import App from './core/App';
 import Block from './core/Block';
-import Stage from './core/Stage';
+import Layer from './core/Layer';
 import Sprite from './core/Sprite';
+import BaseNode from './core/BaseNode';
+
+// @ts-ignore
+window.Lion = {
+  App,
+  Layer,
+  Block,
+  Sprite,
+  BaseNode,
+};
 
 export {
   App,
-  Stage,
+  Layer,
   Block,
   Sprite,
+  BaseNode,
 };
