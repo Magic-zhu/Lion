@@ -1,5 +1,8 @@
 import BaseNode from './BaseNode';
 import {ApplicationOptions} from '../@types/index.d';
+import {Renderer} from './render';
+import type Stage from './Stage';
+
 /**
  *
  *
@@ -9,6 +12,16 @@ import {ApplicationOptions} from '../@types/index.d';
  */
 class App extends BaseNode {
   /**
+   *
+   *
+   * @type {Renderer}
+   * @memberof App
+   */
+  public renderer: Renderer;
+
+  public stage: Stage;
+
+  /**
   * Creates an instance of App.
   * @param {ApplicationOptions} [options]
   * @param {number} [options.resolution]
@@ -17,6 +30,11 @@ class App extends BaseNode {
   */
   constructor(options?:ApplicationOptions) {
     super();
+    this.renderer = new Renderer(options);
+  }
+
+  render() {
+    this.renderer.render(this.stage);
   }
 }
 
