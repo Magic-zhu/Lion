@@ -1,19 +1,19 @@
-import BaseNode from './BaseNode';
+
 import {CircleOptions} from '../@types/index';
+import BaseNode from '../core/BaseNode';
 import Point from '../utils/Point';
 /**
  *
  *
- * @class Sprite
+ * @class Circle
  */
 class Circle extends BaseNode {
   public center:Point
   public radius:number
-
   /**
-   * Creates an instance of Sprite.
-   * @memberof Sprite
-   * @param {SpriteOptions} options
+   * Creates an instance of Circle.
+   * @memberof Circle
+   * @param {CircleOptions} options
    */
   constructor(options:CircleOptions) {
     super();
