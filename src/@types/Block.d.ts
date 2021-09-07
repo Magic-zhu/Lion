@@ -5,4 +5,7 @@ export interface BlockOptions {
     y:number
     borderRadius:number
     backgroundColor?:string
+    border?:number
+    borderColor?:string
+    borderWidth?:number
 }
