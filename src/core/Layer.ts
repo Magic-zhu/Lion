@@ -14,7 +14,7 @@ class Layer extends BaseNode {
      * @memberof Layer
      * @param {Object} options Options for
      */
-  constructor(options:LayerOptions={}) {
+  constructor(options:LayerOptions) {
     super();
     this.nodeType = 'layer';
     this.attributes.zIndex = options.zIndex!==undefined ? options.zIndex:1;
@@ -31,10 +31,12 @@ class Layer extends BaseNode {
   init() {
     const canvas = document.createElement('canvas');
     canvas.style.position = 'absolute';
-    canvas.style.width = '100%';
-    canvas.style.height = '100%';
+    canvas.style.width = `100%`;
+    canvas.style.height = `100%`;
     canvas.style.backgroundColor = this.attributes.backgroundColor;
     canvas.style.zIndex = `${this.attributes.zIndex}`;
+    canvas.width = this.width;
+    canvas.height = this.height;
     this._self = canvas;
   }
 }

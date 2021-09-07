@@ -9,14 +9,12 @@ class BaseNode {
   id: number | string; // unique identification
   x: number = 0; // absolute position
   y: number = 0; // absolute position
+  width: number = 0;
+  height: number = 0;
   parent: any = null;
   children: any = [];
-  nodeType: string = 'base';
+  nodeType: string = 'Base';
   attributes = {
-    width: 0,
-    height: 0,
-    left: 0,
-    top: 0,
     zIndex: 0,
     borderRadius: 0,
     backgroundColor: '#000000',
@@ -33,49 +31,9 @@ class BaseNode {
   }
 
   /**
-   * copy this ndoe
+   * copy this node
    */
   copy() {}
-
-  /**
-   *
-   *
-   * @readonly
-   * @memberof BaseNode
-   */
-  get width() {
-    return this.attributes.width;
-  }
-
-  /**
-   *
-   *
-   * @readonly
-   * @memberof BaseNode
-   */
-  get height() {
-    return this.attributes.height;
-  }
-
-  /**
-   *
-   *
-   * @readonly
-   * @memberof BaseNode
-   */
-  get left() {
-    return this.attributes.left;
-  }
-
-  /**
-   *
-   *
-   * @readonly
-   * @memberof BaseNode
-   */
-  get top() {
-    return this.attributes.top;
-  }
 
   /**
    * addEventListener
@@ -114,8 +72,9 @@ class BaseNode {
    * @param {BaseNode} child
    * @memberof BaseNode
    */
-  append(child:BaseNode) {
+  append(child: BaseNode) {
     if (child instanceof BaseNode) {
+      child.parent = this;
       this.children.push(child);
     } else {
       throw new Error('only Lion node can be appended.');

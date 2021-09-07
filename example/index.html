@@ -19,14 +19,22 @@
     
 </body>
 <script>
-    const App = Lion.App;
-    const Layer = Lion.Layer;
-    const Block = Lion.Block;
+    const {App,Layer,Block} = Lion;
     let app = new App();
-    let f = new Block();
-    let stage = new Layer();
+    let stage = new Layer({
+        backgroundColor:'lightgrey',
+        width:200,
+        height:300,
+    });
     app.append(stage);
-    stage.append(f);
+    let rect = new Block({
+        x:50,
+        y:50,
+        width:100,
+        height:100,
+        backgroundColor:'green'
+    });
+    stage.append(rect);
     console.log(stage)
     app.render()
 </script>

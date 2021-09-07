@@ -1,6 +1,7 @@
-import {renderUseCanvas} from './render';
+import {renderWithCanvas} from './render';
 import {ApplicationOptions} from '../@types/index.d';
 import Layer from './Layer';
+
 /**
  *
  *
@@ -9,32 +10,23 @@ import Layer from './Layer';
  * @extends {BaseNode}
  */
 class App {
-  nodeType:string
-  root:HTMLDivElement = null;
-  layers:Layer [] = [];
+  nodeType: string;
+  root: HTMLDivElement = null;
+  layers: Layer[] = [];
   _layersSortedByIndex = [];
+  resolution: number = 1;
 
   /**
-   *
-   *
-   * @type {Renderer}
+   * Creates an instance of App.
+   * @param {ApplicationOptions} [options]
+   * @param {number} [options.resolution]
+   * The resolution / device pixel ratio of the renderer.
    * @memberof App
    */
-  public renderer: Renderer;
-
-  public stage: Stage;
-
-  /**
-  * Creates an instance of App.
-  * @param {ApplicationOptions} [options]
-  * @param {number} [options.resolution]
-  * The resolution / device pixel ratio of the renderer.
-  * @memberof App
-  */
-  constructor(options?:ApplicationOptions) {
+  constructor(options?: ApplicationOptions) {
     this.nodeType = 'APP';
+    this.resolution = options && options.resolution ? options.resolution : 1;
   }
-
 
   /**
    *
@@ -42,21 +34,30 @@ class App {
    * @param {HTMLDivElement} element
    * @memberof App
    */
-  mount(element:HTMLDivElement) {
+  mount(element: HTMLDivElement) {
     this.root = element;
   }
 
   /**
    *
    *
+   * @param {Layer[]} layers
+   * @return {*}  {Layer []}
+   * @memberof App
+   */
+  sortByzIndex(layers: Layer[]): Layer[] {
+    return layers.sort((a, b) => {
+      return a.attributes.zIndex - b.attributes.zIndex;
+    });
+  }
+  /**
+   *
+   *
    * @memberof App
    */
   render() {
-    this._layersSortedByIndex =
-      this.layers.sort((a, b)=>{
-        return a.attributes.zIndex - b.attributes.zIndex;
-      });
-    renderUseCanvas(this._layersSortedByIndex);
+    this._layersSortedByIndex = this.sortByzIndex(this.layers);
+    renderWithCanvas(this._layersSortedByIndex);
   }
 
   /**
@@ -65,15 +66,21 @@ class App {
    * @memberof App
    * @param {Layer} layer - the instance of layer
    */
-  append(layer:Layer) {
+  append(layer: Layer) {
     // if you had not mount an element, it will create one.
-    if (this.root===null) {
+    if (this.root === null) {
       this.root = document.createElement('div');
       this.root.id = 'LionRoot';
-      this.root.style.width = '100%';
-      this.root.style.height = '100%';
+      this.root.style.width = '100vw';
+      this.root.style.height = '100vh';
       document.body.append(this.root);
     }
+    const width =
+      +getComputedStyle(this.root).width.match(/[0-9]*/) * this.resolution;
+    const height =
+      +getComputedStyle(this.root).height.match(/[0-9]*/) * this.resolution;
+    layer._self.width = width;
+    layer._self.height = height;
     this.root.append(layer._self);
     this.layers.push(layer);
   }

@@ -15,6 +15,10 @@ class Block extends BaseNode {
   constructor(options:BlockOptions) {
     super();
     this.nodeType = 'Block';
+    this.x = options.x;
+    this.y = options.y;
+    this.width = options.width;
+    this.height = options.height;
   }
 }
 
