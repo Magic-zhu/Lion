@@ -1,4 +1,3 @@
-
 import {CircleOptions} from '../@types/index';
 import BaseNode from '../core/BaseNode';
 import Point from '../utils/Point';

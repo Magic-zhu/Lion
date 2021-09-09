@@ -26,6 +26,7 @@ class App {
   constructor(options?: ApplicationOptions) {
     this.nodeType = 'APP';
     this.resolution = options && options.resolution ? options.resolution : 1;
+    this.handleWindowResize();
   }
 
   /**
@@ -75,14 +76,40 @@ class App {
       this.root.style.height = '100vh';
       document.body.append(this.root);
     }
-    const width =
-      +getComputedStyle(this.root).width.match(/[0-9]*/) * this.resolution;
-    const height =
-      +getComputedStyle(this.root).height.match(/[0-9]*/) * this.resolution;
-    layer._self.width = width;
-    layer._self.height = height;
+    this.handleResolution(layer._self);
     this.root.append(layer._self);
     this.layers.push(layer);
+  }
+
+  /**
+   *
+   *
+   * @param {HtmlCanvasElement} canvasEle
+   * @memberof App
+   */
+  handleResolution(canvasEle) {
+    const width =
+    +getComputedStyle(this.root).width.match(/[0-9]*/) * this.resolution;
+    const height =
+    +getComputedStyle(this.root).height.match(/[0-9]*/) * this.resolution;
+    canvasEle.width = width;
+    canvasEle.height = height;
+  }
+
+  /**
+   *
+   *
+   * @memberof App
+   */
+  handleWindowResize() {
+    if (window!== undefined) {
+      window.onresize = () =>{
+        this._layersSortedByIndex.forEach((layer:Layer)=>{
+          this.handleResolution(layer._self);
+        });
+        this.render();
+      };
+    }
   }
 }
 

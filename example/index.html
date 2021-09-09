@@ -19,7 +19,7 @@
     
 </body>
 <script>
-    const {App,Layer,Block} = Lion;
+    const {App,Layer,Block, Sprite} = Lion;
     let app = new App();
     let stage = new Layer({
         backgroundColor:'lightgrey',
@@ -34,7 +34,15 @@
         height:100,
         backgroundColor:'green'
     });
+    let img = new Sprite({
+      src:'https://img2.baidu.com/it/u=4251059536,2165781887&fm=26&fmt=auto&gp=0.jpg',
+      x:200,
+      y:200,
+      width:270,
+      height:129,
+    })
     stage.append(rect);
+    stage.append(img);
     console.log(stage)
     app.render()
 </script>

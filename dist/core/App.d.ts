@@ -11,5 +11,7 @@ declare class App {
     sortByzIndex(layers: Layer[]): Layer[];
     render(): void;
     append(layer: Layer): void;
+    handleResolution(canvasEle: any): void;
+    handleWindowResize(): void;
 }
 export default App;
