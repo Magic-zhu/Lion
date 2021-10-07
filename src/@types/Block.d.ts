@@ -1,5 +1,11 @@
 export interface BlockOptions {
     width?:number
-    number?:number
+    height?:number
+    x:number
+    y:number
+    borderRadius:number
     backgroundColor?:string
+    border?:number
+    borderColor?:string
+    borderWidth?:number
 }
