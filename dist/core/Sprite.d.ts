@@ -1,8 +1,13 @@
 import BaseNode from './BaseNode';
-import { SpriteOptions } from '../@types/index';
+import { SpriteOptions, SpriteClip } from '../@types/index';
 declare class Sprite extends BaseNode {
-    src: string | string[];
+    src: string;
     isStatic: boolean;
+    imgWidth: number;
+    imgHeight: number;
+    _img: HTMLImageElement | null;
+    clip: SpriteClip;
     constructor(options: SpriteOptions);
+    load(): Promise<unknown>;
 }
 export default Sprite;

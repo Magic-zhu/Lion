@@ -11,13 +11,17 @@ export const renderBlock = (ctx:CanvasRenderingContext2D, block:Block)=> {
 
 export const renderSprite = (ctx:CanvasRenderingContext2D, sprite:Sprite)=> {
   if (sprite.isStatic) {
-    const imageSource:string = sprite.src as string;
-    const img = document.createElement('img');
-    img.setAttribute('crossOrigin', 'Anonymous');
-    img.src = imageSource;
-    img.onload = () => {
-      ctx.drawImage(img, sprite.width, sprite.height);
-    };
+    sprite.load()
+        .then((img:HTMLImageElement)=>{
+          console.log(sprite.imgWidth);
+          ctx.drawImage(
+              img,
+              0, 0,
+              sprite.imgWidth, sprite.imgHeight,
+              sprite.width, sprite.height,
+              sprite.x, sprite.y,
+          );
+        });
   }
 };
 
