@@ -19,6 +19,7 @@ class Block extends BaseNode {
     this.y = options.y;
     this.width = options.width;
     this.height = options.height;
+    this.children = options.children!==undefined?options.children:this.children;
   }
 }
 

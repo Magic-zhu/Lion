@@ -10,6 +10,8 @@ declare class BaseNode {
     attributes: {
         zIndex: number;
         borderRadius: number;
+        borderColor: string;
+        borderWidth: number;
         backgroundColor: string;
         padding: number[];
         margin: number[];

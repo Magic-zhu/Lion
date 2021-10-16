@@ -15,8 +15,12 @@ class BaseNode {
   children: any = [];
   nodeType: string = 'Base';
   attributes = {
+    // ^ position
     zIndex: 0,
+    // ^ border
     borderRadius: 0,
+    borderColor: '#000000',
+    borderWidth: 0,
     backgroundColor: '#000000',
     padding: [0, 0, 0, 0],
     margin: [0, 0, 0, 0],

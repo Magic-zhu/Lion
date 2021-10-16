@@ -20,6 +20,7 @@ class Layer extends BaseNode {
     this.attributes.zIndex = options.zIndex!==undefined ? options.zIndex:1;
     this.attributes.backgroundColor =
       options.backgroundColor!==undefined?options.backgroundColor:'#000000';
+    this.children = options.children!==undefined?options.children:[];
     this.init();
   }
 

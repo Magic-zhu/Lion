@@ -56,6 +56,7 @@ class Sprite extends BaseNode {
         };
       });
     } else {
+      // TODO: for a group of imgs
       return new Promise((resolve, reject)=>{
 
       });

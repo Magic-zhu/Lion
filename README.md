@@ -12,4 +12,15 @@ Road Map
 
 ### basic canvas
 
-Block ~= div
+Block
+
+```js
+new Block({
+  x: 100,
+  y: 100,
+});
+```
+
+| support attribute | description |
+| :---------------: | :---------: |
+|         x         |

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="../dist/lion.iife.min.js"></script>
+  <style>
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+</body>
+<script>
+  const { App, Layer, Block, Sprite } = Lion;
+  let app = new App();
+  const layer = new Layer({
+    backgroundColor: 'lightgrey',
+    width: 200,
+    height: 300,
+    children: [
+      new Block({
+        x: 50,
+        y: 50,
+        width: 100,
+        height: 100,
+        backgroundColor: 'green'
+      }),
+      new Sprite({
+        src: 'https://img2.baidu.com/it/u=4251059536,2165781887&fm=26&fmt=auto&gp=0.jpg',
+        x: 200,
+        y: 200,
+        width: 270,
+        height: 270,
+      }),
+    ]
+  })
+  console.log(layer)
+  app.append(layer)
+  app.render()
+</script>
+
+</html>

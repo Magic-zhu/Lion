@@ -1,3 +1,5 @@
+import {LionElement} from './LionElememt';
+
 export interface BlockOptions {
     width?:number
     height?:number
@@ -5,7 +7,7 @@ export interface BlockOptions {
     y:number
     borderRadius:number
     backgroundColor?:string
-    border?:number
     borderColor?:string
     borderWidth?:number
+    children?:LionElement
 }
