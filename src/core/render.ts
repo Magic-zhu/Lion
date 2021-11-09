@@ -5,9 +5,9 @@ import Sprite from './Sprite';
 type LionNode = Block | Sprite;
 
 interface Border {
-  color: string;
-  width: number;
-  radius: number;
+    color: string;
+    width: number;
+    radius: number;
 }
 
 /**
@@ -91,6 +91,12 @@ export const renderSprite = (ctx: CanvasRenderingContext2D, sprite: Sprite) => {
   if (sprite.isStatic) {
     sprite.load().then((img: HTMLImageElement) => {
       console.log(sprite.imgWidth);
+      ctx.save();
+      const {x, y, width, height, borderRadius} = sprite;
+      if (sprite.borderRadius!==0) {
+        drawRadiusRoute(ctx, x, y, width, height, borderRadius);
+        ctx.clip();
+      }
       ctx.drawImage(
           img,
           0,
@@ -102,6 +108,7 @@ export const renderSprite = (ctx: CanvasRenderingContext2D, sprite: Sprite) => {
           sprite.x,
           sprite.y,
       );
+      ctx.restore();
     });
   }
 };

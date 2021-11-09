@@ -11,6 +11,7 @@ class Sprite extends BaseNode {
   imgWidth:number = 0;
   imgHeight:number = 0;
   _img:HTMLImageElement|null = null;
+  borderRadius: number = 0;
   clip:SpriteClip = {};
   /**
    * Creates an instance of Sprite.
@@ -25,7 +26,14 @@ class Sprite extends BaseNode {
     this.width = options.width;
     this.height = options.height;
     this.src = options.src;
-    options.isStatic!==undefined?this.isStatic = options.isStatic:null;
+    const attrMap = [
+      'borderRadius',
+      'isStatic',
+    ];
+    attrMap.forEach((key: string) => {
+      this.attributes[key] =
+        options[key] !== undefined ? options[key] : this.attributes[key];
+    });
     this.load();
   }
   /**
