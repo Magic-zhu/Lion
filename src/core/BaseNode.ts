@@ -42,7 +42,7 @@ class BaseNode {
   /**
    * addEventListener
    */
-  addEventListener() {}
+  addEventListener(event:Event, func: Function) {}
 
   /**
    *
@@ -56,6 +56,10 @@ class BaseNode {
    */
   removeAllListeners() {}
 
+
+  on(args:any) {
+    this.addEventListener(...args)
+  }
   /**
    *
    *

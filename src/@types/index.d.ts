@@ -4,3 +4,4 @@ export * from './Layer.d';
 export * from './Sprite.d';
 export * from './Circle.d';
 
+export * from './Event.d';
