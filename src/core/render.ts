@@ -5,9 +5,9 @@ import Sprite from './Sprite';
 type LionNode = Block | Sprite;
 
 interface Border {
-    color: string;
-    width: number;
-    radius: number;
+  color: string;
+  width: number;
+  radius: number;
 }
 
 /**
@@ -21,12 +21,12 @@ interface Border {
  * @param {number} r
  */
 const drawRadiusRoute = (
-    ctx: CanvasRenderingContext2D,
-    x: number,
-    y: number,
-    w: number,
-    h: number,
-    r: number,
+  ctx: CanvasRenderingContext2D,
+  x: number,
+  y: number,
+  w: number,
+  h: number,
+  r: number
 ): void => {
   ctx.beginPath();
   ctx.moveTo(x + r, y);
@@ -42,11 +42,11 @@ const drawRadiusRoute = (
 };
 
 const setBorder = (
-    ctx: CanvasRenderingContext2D,
-    borderParams: Border,
-    block: Block,
+  ctx: CanvasRenderingContext2D,
+  borderParams: Border,
+  block: Block
 ) => {
-  const {x, y} = block;
+  const { x, y } = block;
   const w = block.width;
   const h = block.height;
   if (borderParams.width) ctx.lineWidth = borderParams.width;
@@ -63,17 +63,17 @@ const setBorder = (
 };
 
 export const renderBlock = (ctx: CanvasRenderingContext2D, block: Block) => {
-  const {x, y, width, height} = block;
-  const {borderRadius, borderColor, borderWidth} = block.attributes;
+  const { x, y, width, height } = block;
+  const { borderRadius, borderColor, borderWidth } = block.attributes;
   if (borderWidth) {
     setBorder(
-        ctx,
-        {
-          width: borderWidth,
-          color: borderColor,
-          radius: borderRadius,
-        },
-        block,
+      ctx,
+      {
+        width: borderWidth,
+        color: borderColor,
+        radius: borderRadius,
+      },
+      block
     );
   }
   ctx.save();
@@ -92,21 +92,21 @@ export const renderSprite = (ctx: CanvasRenderingContext2D, sprite: Sprite) => {
     sprite.load().then((img: HTMLImageElement) => {
       console.log(sprite.imgWidth);
       ctx.save();
-      const {x, y, width, height, borderRadius} = sprite;
-      if (sprite.borderRadius!==0) {
+      const { x, y, width, height, borderRadius } = sprite;
+      if (sprite.borderRadius !== 0) {
         drawRadiusRoute(ctx, x, y, width, height, borderRadius);
         ctx.clip();
       }
       ctx.drawImage(
-          img,
-          0,
-          0,
-          sprite.imgWidth,
-          sprite.imgHeight,
-          sprite.width,
-          sprite.height,
-          sprite.x,
-          sprite.y,
+        img,
+        0,
+        0,
+        sprite.imgWidth,
+        sprite.imgHeight,
+        sprite.width,
+        sprite.height,
+        sprite.x,
+        sprite.y
       );
       ctx.restore();
     });
@@ -126,3 +126,5 @@ export const renderWithCanvas = (layers) => {
     });
   });
 };
+
+export const renderWithWebGL = (layers) => {};
