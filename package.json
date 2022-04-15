@@ -12,7 +12,7 @@
     "url": "git+https://github.com/Magic-zhu/mot.git"
   },
   "keywords": [
-    "canvas"
+    "canvas webgl renderer rendering-engine typescript javascript"
   ],
   "author": "magic-zhu",
   "license": "MIT",
@@ -38,7 +38,7 @@
   "types": "build/index.d.ts",
   "files": [
     "src",
-    "build"
+    "dist"
   ],
   "module": "./src/index.ts"
 }
